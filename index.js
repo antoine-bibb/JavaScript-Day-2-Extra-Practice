@@ -1,28 +1,34 @@
 // Use Array Methods to solve the tasks below 🎉
 
-const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+const toppings = ['Mushrooms', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
 
 /*
 TASK 1 🚀
 // The customer would like to see the topping options, console log out each of the toppings one by one in the array above 
 */
-
-
+toppings.forEach(function(item){
+  console.log(item);
+});
+  
 /*
 TASK 2 🚀
 // write a function that accepts an array and an item and removes that item from the array
 for example you no longer have any onions and need to remove it from the list of toppings
 Use .forEach() - hint - you will need to include the index in the callback
  */
-
-
-
+function notThat(arr, item){
+    const remove = arr.forEach(function (food){
+        return food != item
+    })
+    return remove;
+}
+console.log(toppings, 'Onion');
 /*
 TASK 3 🚀
 // Sort the topping alphabetically and return them in a new array 
 */
-
-
+toppings.sort();
+console.log(toppings.sort());
 
 
 const vacations = [
@@ -42,29 +48,62 @@ const vacations = [
 TASK 4 🚀
 // The travel agent would like to send a couple on their honeymoon to a location with a beach and a temperature above 90 degrees. return their options in a new array 
 */
-
+const honeymoon = vacations.filter(
+    function(item){
+    return item.temperature > 90 
+    && item.beach == true;
+});
+console.log(honeymoon);
 
 
 /*
 TASK 5 🚀
 // A developer decides to become a digital nomad for a year, they would like to live in a place with strong wifi, a beach, and good hiking, return their options
 */
-
-
+const spots = vacations.filter(
+    function(item){
+        return item.wifi == 'strong'
+        &&item.beach == true
+        &&item.hiking == true;
+    });console.log(spots);
 
 /* 
 TASK 6 🚀
 // write a function that allows a user to sort their vacations by hiking opportunities, beach access or a mix of both and return their options
 */
-
-
+const hike = vacations.filter(function(item){
+    return item.hiking == true;
+});
+const beaches = vacations.filter(function(item){
+    return item.beach == true;
+});
+const both = vacations.filter(function(item){
+    return item.hiking == true &&
+    item.beach == true;
+});
+function vacGoals (goals){
+    if (goals == 'hiking'){
+        return hike;
+    }else if (goal == 'beach'){
+        return beaches;
+    }else if (goal == 'both'){
+        return both;
+    }else {
+        return `sorry nothing here for you !!!`;
+      }
+   }
+   console.log('hiking');
 
 /* 
 TASK 7 🚀
 // write a function that finds the average of overall ratings in a given array. The function should take an array as its argument and should return the average of the overall ratings in that array 
 hint - use .reduce()
 */
-
+const rating = vacations.reduce(
+    function(acc, item){
+    return acc + item.overall_rating;
+},0)
+console.log(rating/vacations.length);
 
 /*
 TASK 8 🚀
